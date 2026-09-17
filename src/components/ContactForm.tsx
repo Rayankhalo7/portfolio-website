@@ -23,13 +23,9 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-5 rounded-xl border border-border bg-card p-6"
-      noValidate
-    >
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-foreground">
+        <label htmlFor="name" className="block text-sm font-semibold text-foreground">
           Name
         </label>
         <input
@@ -40,14 +36,14 @@ export function ContactForm() {
           autoComplete="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground placeholder:text-muted"
+          className="input mt-1.5"
           placeholder="Ihr Name"
         />
       </div>
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-foreground"
+          className="block text-sm font-semibold text-foreground"
         >
           E-Mail
         </label>
@@ -59,14 +55,14 @@ export function ContactForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground placeholder:text-muted"
+          className="input mt-1.5"
           placeholder="ihre.email@beispiel.de"
         />
       </div>
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-foreground"
+          className="block text-sm font-semibold text-foreground"
         >
           Nachricht
         </label>
@@ -77,15 +73,12 @@ export function ContactForm() {
           rows={6}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground placeholder:text-muted"
+          className="input mt-1.5"
           placeholder="Ihre Nachricht …"
         />
       </div>
-      <button
-        type="submit"
-        className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-hover dark:text-slate-950"
-      >
-        Nachricht senden
+      <button type="submit" className="btn btn-primary w-full sm:w-auto">
+        Nachricht schreiben
       </button>
       {status ? (
         <p className="text-sm text-muted" role="status">
@@ -96,7 +89,7 @@ export function ContactForm() {
         Fallback:{" "}
         <a
           href={`mailto:${site.email}`}
-          className="font-medium text-accent hover:underline"
+          className="font-semibold text-accent hover:underline"
         >
           {site.email}
         </a>

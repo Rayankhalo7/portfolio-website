@@ -4,7 +4,7 @@ import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 
 export default function HomePage() {
   return (
-    <div className="space-y-12">
+    <div className="rail hero-reveal space-y-12">
       <Hero />
       <ProfileSummary />
       <ExperienceTimeline />

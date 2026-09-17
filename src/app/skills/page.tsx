@@ -9,12 +9,10 @@ export const metadata: Metadata = {
 
 export default function SkillsPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          Kenntnisse
-        </h1>
-        <p className="mt-2 max-w-2xl text-muted-strong">
+        <h1 className="text-page-title text-foreground">Kenntnisse</h1>
+        <p className="text-body-narrow mt-2 text-muted">
           Gruppierte Übersicht meiner aktiven Schwerpunkte und ergänzenden
           Kompetenzen aus Ausbildung und Berufspraxis.
         </p>

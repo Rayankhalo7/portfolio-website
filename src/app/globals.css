@@ -2,57 +2,68 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Konzept v2 — Betriebswerkstatt tokens */
 :root {
-  --background: #FAFAF9;
-  --foreground: #0F172A;
-  --muted: #64748B;
-  --muted-strong: #475569;
-  --card: #FFFFFF;
-  --border: #E7E5E4;
-  --accent: #0F766E;
-  --accent-hover: #115E59;
-  --accent-soft: #CCFBF1;
-  --danger: #DC2626;
-  --success: #059669;
-  --warning: #D97706;
+  --porcelain: #f5f6f8;
+  --ink: #1a2332;
+  --steel: #5c6b7a;
+  --panel: #ffffff;
+  --rule: #d0d7e0;
+  --cobalt: #2f5bff;
+  --cobalt-hover: #2448d6;
+  --danger: #c62828;
+
+  --background: var(--porcelain);
+  --foreground: var(--ink);
+  --muted: var(--steel);
+  --panel-bg: var(--panel);
+  --border: var(--rule);
+  --accent: var(--cobalt);
+  --accent-hover: var(--cobalt-hover);
 }
 
 .dark {
-  --background: #0C0F14;
-  --foreground: #E2E8F0;
-  --muted: #94A3B8;
-  --muted-strong: #CBD5E1;
-  --card: #12171F;
-  --border: #1E2530;
-  --accent: #2DD4BF;
-  --accent-hover: #5EEAD4;
-  --accent-soft: #134E4A;
-  --danger: #F87171;
-  --success: #34D399;
-  --warning: #FBBF24;
+  --porcelain: #0e141c;
+  --ink: #e8eef4;
+  --steel: #9aa8b5;
+  --panel: #161d28;
+  --rule: #2a3444;
+  --cobalt: #7b93ff;
+  --cobalt-hover: #9aafff;
+  --danger: #ef5350;
+
+  --background: var(--porcelain);
+  --foreground: var(--ink);
+  --muted: var(--steel);
+  --panel-bg: var(--panel);
+  --border: var(--rule);
+  --accent: var(--cobalt);
+  --accent-hover: var(--cobalt-hover);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-muted-strong: var(--muted-strong);
-  --color-card: var(--card);
+  --color-panel: var(--panel-bg);
   --color-border: var(--border);
+  --color-rule: var(--border);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  --color-accent-soft: var(--accent-soft);
   --color-danger: var(--danger);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-porcelain: var(--porcelain);
+  --color-ink: var(--ink);
+  --color-steel: var(--steel);
+  --font-sans: var(--font-source-sans);
+  --font-display: var(--font-syne);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
 }
 
 *:focus-visible {
@@ -60,14 +71,113 @@ body {
   outline-offset: 2px;
 }
 
+.font-display {
+  font-family: var(--font-syne), system-ui, sans-serif;
+}
+
 .text-display {
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.1;
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.text-page-title {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.text-section-title {
+  font-size: 1.15rem;
+  line-height: 1.35;
   font-weight: 700;
 }
 
-.text-muted-strong {
-  color: var(--muted-strong);
+.text-meta {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--steel);
+}
+
+.text-body-narrow {
+  max-width: 38rem;
+}
+
+/*
+  Cobalt rail — signature element
+  Desktop: 4px left · Mobile (<768px): 3px left (chosen; not top accent)
+*/
+.rail {
+  border-left: 4px solid var(--accent);
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 767px) {
+  .rail {
+    border-left-width: 3px;
+    padding-left: 1rem;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0.7rem 1.15rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.dark .btn-primary {
+  color: #0e141c;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.input {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background: var(--background);
+  color: var(--ink);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+
+.input::placeholder {
+  color: var(--steel);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
 }
 
 .scrollbar-none {
@@ -77,4 +187,33 @@ body {
 
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal {
+  animation: hero-reveal 0.45s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

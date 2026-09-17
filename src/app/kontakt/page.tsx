@@ -9,17 +9,14 @@ export const metadata: Metadata = {
 
 export default function KontaktPage() {
   return (
-    <div className="mx-auto max-w-xl space-y-6">
+    <div className="mx-auto max-w-xl space-y-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          Kontakt
-        </h1>
-        <p className="mt-2 text-muted-strong">
-          Schreiben Sie mir über das Formular oder direkt per E-Mail. Adresse
-          und Telefonnummer werden aus Datenschutzgründen nicht veröffentlicht.
+        <h1 className="text-page-title text-foreground">Kontakt</h1>
+        <p className="mt-2 text-muted">
+          Schreiben Sie mir über das Formular oder direkt per E-Mail.
         </p>
         <p className="mt-4 text-sm">
-          <span className="font-medium text-foreground">E-Mail: </span>
+          <span className="font-semibold text-foreground">E-Mail: </span>
           <a
             href={`mailto:${site.email}`}
             className="text-accent hover:text-accent-hover hover:underline"
